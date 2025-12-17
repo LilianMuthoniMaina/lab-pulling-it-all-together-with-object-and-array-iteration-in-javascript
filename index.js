@@ -114,3 +114,149 @@ function gameObject() {
         },
     };
 }
+function numPointsScored(playerName) {
+    const game = gameObject()
+    let homePlayers = game.home.players;
+    let awayPlayers = game.away.players;
+    let homeplayer = homePlayers[playerName];
+    let awayplayer= awayPlayers[playerName];
+    if(homeplayer){
+        return homeplayer.points
+    }
+    if(awayplayer){
+        return awayplayer.points
+    }
+    
+}
+
+function shoeSize(playerName) {
+    const game = gameObject();
+    let homePlayers = game.home.players;
+    let awayPlayers = game.away.players;
+
+    let homePlayer = homePlayers[playerName];
+    let awayPlayer = awayPlayers[playerName];
+    
+    if(homePlayer){
+        return homePlayer.shoe
+    }
+    if(awayPlayer){
+        return awayPlayer.shoe
+    }
+}
+function teamColors(teamName) {
+    const game=gameObject();
+    let home = game.home;
+    let away = game.away;
+    if(home.teamName == teamName){
+        return home.colors;
+    }
+    if (away.teamName == teamName) {
+        return away.colors;
+    }
+}
+
+    function teamNames() {
+  const game = gameObject();
+  const home = game.home;
+
+  const away = game.away;
+
+  return [home.teamName, away.teamName];
+}
+
+function playerNumbers(teamName){
+    const game = gameObject()
+    const home = game.home;
+    const away = game.away;
+if(home.teamName === teamName) {
+    const players = home.players; 
+    const playerKeys = Object.keys(players); 
+    let jerseyNumbers = [];
+    for(let i = 0; i < playerKeys.length; i++) {
+      let playerKey = playerKeys[i]; 
+      let playerObj = players[playerKey]; 
+      let jerseyNumber = playerObj.number;
+      jerseyNumbers.push(jerseyNumber);
+    
+    }
+    return jerseyNumbers;
+}
+      if(away.teamName === teamName){
+        const players = away.players;
+        const playKeys = Object.keys(players);
+        let jerseyNumbers = [];
+        for(let i = 0; i < playKeys.length; i++) {
+            let playKey = playKeys[i];
+            let playerObj = players[playKey];
+            let jerseyNumber = playerObj.number;
+            jerseyNumbers.push(jerseyNumber);
+            
+
+        }
+        return jerseyNumbers;
+      }
+      
+    }
+    
+
+function playerStats(playerName){
+    const game = gameObject()
+    const home = game.home;
+    const away = game.away;
+if(home.players[playerName]){
+    return home.players[playerName];
+}
+if(away.players[playerName]){
+    return away.players[playerName]
+}
+}
+ function bigShoeRebounds(){
+    const game= gameObject();
+    let largestShoe = 0;
+    let rebounds = 0;
+    const homePlayers = game.home.players;
+    Object.values(homePlayers).forEach(
+    player => {
+        if(player.shoe > largestShoe) {
+            largestShoe = player.shoe;
+            rebounds = player.rebounds
+        }
+    })
+    const awayPlayers = game.away.players;
+    Object.values(awayPlayers).forEach(
+        player => {
+            if(player.shoe > largestShoe) {
+                largestShoe = player.shoe;
+                rebounds = player.rebounds;
+            }
+        })
+    
+    return rebounds;
+ }
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
